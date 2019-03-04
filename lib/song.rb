@@ -36,6 +36,7 @@ class Song
     if self.find_by_name(name) == self.create_by_name(name)
     else
       nil
+    end
   end
 
   def self.alphabetical
