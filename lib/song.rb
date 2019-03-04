@@ -35,7 +35,7 @@ class Song
       # end
     song
   end
-  
+
   def self.find_or_create_by_name(name)
     if self.find_by_name(name) == nil
       self.create_by_name(name)
@@ -48,7 +48,7 @@ class Song
                                           # describe '.new_from_filename' do
                                           #   it 'initializes a song and artist_name based on the filename format' do
                                           #     song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
-                                        
+
                                           #     expect(song.name).to eq("For Love I Come")
                                           #     expect(song.artist_name).to eq("Thundercat")
                                           #   end
@@ -59,12 +59,12 @@ class Song
     a = filename.split(" - ")[1]
     a2 = a.slice!(".mp3")
     song.name = a
-    
+
   end
-  
+
   def self.create_from_filename(filename)
   end
-  
+
   def self.destroy_all
     @@all.clear
   end
