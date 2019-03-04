@@ -11,10 +11,8 @@ class Song
     song = self.new
     song.save
     song
-
   end
 
-#How do I expose the passed-in argument, name, as the newly-instantiated song's title?
   def self.new_by_name(name)
     song = self.new
     song.name = name
@@ -37,7 +35,7 @@ class Song
       # end
     song
   end
-
+  
   def self.find_or_create_by_name(name)
     # binding.pry
     if self.find_by_name(name) == nil
@@ -48,12 +46,29 @@ class Song
   def self.alphabetical
     @@all.sort_by {|song| song.name}
   end
-
-  # def self.new_from_filename
-  #   binding.pry
-  #   song = Song.new
-  #
-  # end
+                                          # describe '.new_from_filename' do
+                                          #   it 'initializes a song and artist_name based on the filename format' do
+                                          #     song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
+                                        
+                                          #     expect(song.name).to eq("For Love I Come")
+                                          #     expect(song.artist_name).to eq("Thundercat")
+                                          #   end
+                                          # end
+  def self.new_from_filename(filename)
+    song = Song.new
+    song.artist_name = filename.split(" - ")[0]
+    a = filename.split(" - ")[1]
+    a2 = a.slice!(".mp3")
+    song.name = a
+    
+  end
+  
+  def self.create_from_filename(filename)
+  end
+  
+  def self.destroy_all
+    @@all.clear
+  end
 
   def save
     self.class.all << self
